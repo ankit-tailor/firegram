@@ -113,13 +113,13 @@ label:hover {
   border: 3px solid white;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 650px) {
   .img-grid {
     grid-template-columns: 1fr 1fr;
   }
 }
 
-@media screen and (max-width: 380px) {
+@media screen and (max-width: 450px) {
   .img-grid {
     grid-template-columns: 1fr;
   }
