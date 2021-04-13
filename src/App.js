@@ -13,7 +13,6 @@ function App() {
 
   const signInWithGoogle = () =>
     projectAuth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
-
   const signOut = () => projectAuth.signOut();
 
   return (
