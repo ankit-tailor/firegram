@@ -8,12 +8,20 @@
 
 /* base styles & title */
 body {
+  width: 50%;
+  margin: auto;
   font-family: "Noto Serif";
   color: var(--secondary);
 }
 .App {
   max-width: 960px;
   margin: 0 auto;
+  min-height: 100vh;
+}
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 .title h1 {
   color: var(--primary);
@@ -21,6 +29,21 @@ body {
   letter-spacing: 2px;
   font-weight: normal;
 }
+
+.title button {
+  width: 4rem;
+  height: 2rem;
+  background-color: var(--primary);
+  border: none;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+}
+
+.title button:hover {
+  background-color: #a09a9a;
+}
+
 .title h2,
 .title p {
   text-align: center;
@@ -35,6 +58,22 @@ form {
   margin: 30px auto 10px;
   text-align: center;
 }
+
+.input-section > input {
+  border: none;
+  background-color: #d1d1d1;
+  width: 94%;
+  padding: 0.7rem 0.3rem;
+  color: #000000;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-family: "Noto sherif";
+}
+
+input[type="text"] {
+  outline: none;
+}
+
 label input {
   height: 0;
   width: 0;
@@ -75,16 +114,19 @@ label:hover {
 .img-grid {
   margin: 20px auto;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr;
   grid-gap: 40px;
+}
+.post-section {
+  border: 1px solid var(--primary);
 }
 .img-wrap {
   overflow: hidden;
   height: 0;
   padding: 50% 0;
-  /* padding controls height, will always be perfectly square regardless of width */
   position: relative;
   opacity: 0.8;
+  margin: 2px;
 }
 .img-wrap img {
   min-width: 100%;
@@ -95,6 +137,14 @@ label:hover {
   left: 0;
 }
 
+.favourite-icon {
+  margin-left: 0.7rem;
+}
+
+.post-section p {
+  margin-left: 0.7rem;
+}
+
 /* modal styles */
 .backdrop {
   position: fixed;
@@ -102,25 +152,34 @@ label:hover {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(134, 133, 133, 0.5);
 }
 .backdrop img {
   display: block;
   max-width: 60%;
   max-height: 80%;
   margin: 60px auto;
-  box-shadow: 3px 5px 7px rgba(0, 0, 0, 0.5);
+  box-shadow: 3px 5px 7px rgba(134, 134, 134, 0.5);
   border: 3px solid white;
 }
 
-@media screen and (max-width: 650px) {
-  .img-grid {
-    grid-template-columns: 1fr 1fr;
+.footer {
+  background-color: var(--primary);
+  color: white;
+  text-align: center;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  padding: 0.1rem 0rem;
+}
+
+@media screen and (max-width: 800px) {
+  body {
+    width: 95%;
   }
 }
 
 @media screen and (max-width: 450px) {
-  .img-grid {
-    grid-template-columns: 1fr;
+  body {
+    width: 98%;
   }
 }
