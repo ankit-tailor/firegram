@@ -6,7 +6,6 @@ import "../index.css";
 
 const ProgressBar = ({ file, setFile, caption, setCaption }) => {
   const { url, progress } = useStorage(file, caption);
-  //   console.log(progress, url);
 
   useEffect(() => {
     if (url) {
