@@ -5,7 +5,7 @@ import {
   timestamp,
 } from "../firebase/config";
 
-const useStorage = (file) => {
+const useStorage = (file, caption) => {
   const [progress, setProgress] = useState(0);
   const [error, setError] = useState("");
   const [url, setUrl] = useState(null);
@@ -29,10 +29,11 @@ const useStorage = (file) => {
         collectionRef.add({
           url,
           createdAt,
+          caption,
         });
       }
     );
-  }, [file]);
+  }, [file, caption]);
 
   return { progress, url, error };
 };
