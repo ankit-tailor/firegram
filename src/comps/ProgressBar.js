@@ -4,15 +4,16 @@ import { useEffect } from "react";
 import useStorage from "../hooks/useStorage";
 import "../index.css";
 
-const ProgressBar = ({ file, setFile }) => {
-  const { url, progress } = useStorage(file);
+const ProgressBar = ({ file, setFile, caption, setCaption }) => {
+  const { url, progress } = useStorage(file, caption);
   //   console.log(progress, url);
 
   useEffect(() => {
     if (url) {
       setFile(null);
+      setCaption("");
     }
-  }, [url, setFile]);
+  }, [url, setFile, setCaption]);
 
   return (
     <motion.div

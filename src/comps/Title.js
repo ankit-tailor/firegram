@@ -1,13 +1,17 @@
-import React from 'react';
+import React from "react";
 
-const Title = () => {
+const Title = ({ clickHandel, button, description }) => {
   return (
     <div className="title">
-      <h1>FireGram</h1>
+      <div className="header">
+        <h1>FireGram</h1>
+        <button onClick={clickHandel}>{button}</button>
+      </div>
+      <hr />
       <h2>Your Pictures</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      <p>{description}</p>
     </div>
-  )
-}
+  );
+};
 
 export default Title;
