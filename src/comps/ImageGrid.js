@@ -3,7 +3,6 @@ import "../index.css";
 import useFirestore from "../hooks/useFirestore";
 import { motion } from "framer-motion";
 import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
-import { ImageSearchTwoTone } from "@material-ui/icons";
 
 const ImageGrid = ({ setImage }) => {
   const { imageData } = useFirestore("image");
