@@ -12,6 +12,7 @@ body {
   margin: auto;
   font-family: "Noto Serif";
   color: var(--secondary);
+  min-height: 100vh;
 }
 .App {
   max-width: 960px;
@@ -135,6 +136,13 @@ label:hover {
   margin: 20px auto;
   display: grid;
   grid-template-columns: 1fr;
+  grid-gap: 40px;
+}
+
+.gird {
+  margin: 20px auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 40px;
 }
 
