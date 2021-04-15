@@ -23,6 +23,12 @@ body {
   align-items: center;
   justify-content: space-between;
 }
+
+.header__personal {
+  display: flex;
+  align-items: center;
+}
+
 .title h1 {
   color: var(--primary);
   font-size: 1.2rem;
@@ -31,17 +37,31 @@ body {
 }
 
 .title button {
-  width: 4rem;
+  width: 5rem;
   height: 2rem;
   background-color: var(--primary);
   border: none;
   border-radius: 5px;
   color: white;
   cursor: pointer;
+  font-family: "Noto sherif";
+}
+
+.title button:nth-child(odd) {
+  margin-right: 1rem;
+  background-color: #f1f1f1;
+  color: gray;
+}
+
+.title button:nth-child(odd):hover {
+  margin-right: 1rem;
+  background-color: var(--primary);
+  color: #ffffff;
 }
 
 .title button:hover {
-  background-color: #a09a9a;
+  background-color: #f1f1f1;
+  color: gray;
 }
 
 .title h2,
@@ -117,6 +137,7 @@ label:hover {
   grid-template-columns: 1fr;
   grid-gap: 40px;
 }
+
 .post-section {
   border: 1px solid var(--primary);
 }
@@ -137,8 +158,32 @@ label:hover {
   left: 0;
 }
 
-.favourite-icon {
+.update-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.2rem;
   margin-left: 0.7rem;
+  margin-right: 0.7rem;
+}
+
+.delete-icon {
+  color: #000000;
+  cursor: pointer;
+}
+
+.edit-icon {
+  color: #000000;
+  cursor: pointer;
+  margin-right: 0.5rem;
+}
+
+.favourite-icon {
+  cursor: pointer;
+}
+
+.favourite-icon:hover {
+  color: var(--primary);
 }
 
 .post-section p {
@@ -172,14 +217,169 @@ label:hover {
   padding: 0.1rem 0rem;
 }
 
+/* Edit Modal */
+
+.editor {
+  display: block;
+  width: 50%;
+  margin: 10rem auto;
+  background-color: var(--primary);
+  box-shadow: 3px 5px 7px rgba(134, 134, 134, 0.5);
+  border: 1px solid white;
+  border-radius: 5px;
+}
+
+.editor > input {
+  display: block;
+  width: 90%;
+  margin: 1rem auto;
+  padding: 0.3rem 0.3rem;
+  border: none;
+  font-size: 1rem;
+  font-family: "Noto sherif";
+  border-radius: 5px;
+}
+
+.editor button {
+  font-size: 1rem;
+  margin-top: 10px;
+  margin-left: 2rem;
+  margin-bottom: 1rem;
+  font-family: "Noto sherif";
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+}
+
+/* Authentication */
+.backdropp {
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(85, 82, 82, 0.5);
+}
+
+.authentication {
+  display: block;
+  width: 50%;
+  margin: 10rem auto;
+  background-color: var(--primary);
+  box-shadow: 3px 5px 7px rgba(134, 134, 134, 0.5);
+  border: 1px solid white;
+  border-radius: 5px;
+}
+
+.close-icon {
+  margin-right: 1rem;
+  margin-top: 0.6rem;
+  float: right;
+  cursor: pointer;
+}
+
+.authentication h3 {
+  text-align: center;
+}
+
+.authentication input {
+  display: block;
+  width: 90%;
+  margin: auto;
+  padding: 0.3rem 1rem;
+  margin-bottom: 10px;
+  font-size: 1rem;
+  font-family: "Noto sherif";
+  border: none;
+  border-radius: 5px;
+}
+
+.authentication input:focus {
+  outline: none;
+}
+
+.authentication button {
+  display: block;
+  font-size: 1rem;
+  width: 95%;
+  margin: auto;
+  padding: 0.5rem 1rem;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  border: none;
+  font-family: "Noto sherif";
+  cursor: pointer;
+}
+
+.auth-text {
+  color: #ffffff;
+  text-align: center;
+}
+
+.authentication button:hover {
+  background-color: #817c7c;
+  color: #f1f1f1;
+}
+
+/* Error Modal */
+
+.error-message {
+  width: 50%;
+  background-color: var(--primary);
+  margin: auto;
+  text-align: center;
+  margin-top: 10rem;
+  padding-bottom: 0.8rem;
+  border-radius: 10px;
+  font-family: "Noto sherif";
+  color: #ffffff;
+}
+
+.error-message button {
+  border: none;
+  padding: 0.5rem 1rem;
+  font-size: 0.8rem;
+  background-color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
 @media screen and (max-width: 800px) {
   body {
     width: 95%;
+  }
+  .authentication {
+    width: 90%;
+  }
+  .authentication input {
+    width: 80%;
+  }
+  .authentication button {
+    width: 85%;
+  }
+  .editor {
+    width: 90%;
   }
 }
 
 @media screen and (max-width: 450px) {
   body {
     width: 98%;
+  }
+}
+
+@media screen and (max-width: 280px) {
+  .header__personal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .title button:nth-child(odd) {
+    margin-top: 5px;
+    margin-bottom: 5px;
   }
 }
