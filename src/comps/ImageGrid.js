@@ -2,7 +2,7 @@ import React from "react";
 import "../index.css";
 import useFirestore from "../hooks/useFirestore";
 import { motion } from "framer-motion";
-import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
+// import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 import {
   projectAuth,
   projectFirestore,
