@@ -35,7 +35,7 @@ const ImageGrid = ({ setImage, click, showError, setShowError, setClick }) => {
 
   const handelLike = (id, likeCount) => {
     if (!user) {
-      alert("signIn or signUp to like the post.");
+      alert("Signin to like the post");
     } else {
       let newLikes = likeCount;
       const likeRef = projectFirestore
@@ -102,7 +102,9 @@ const ImageGrid = ({ setImage, click, showError, setShowError, setClick }) => {
               <div className="update-section">
                 <FavoriteBorderIcon
                   className="favourite-icon"
-                  onClick={() => handelLike(image.id, image.likeCount)}
+                  onClick={() => {
+                    handelLike(image.id, image.likeCount);
+                  }}
                 />
                 {user && projectAuth.currentUser.uid === image.userId && (
                   <div>
@@ -158,7 +160,12 @@ const ImageGrid = ({ setImage, click, showError, setShowError, setClick }) => {
                   <p>{image.caption}</p>
                   <p>{image.likeCount} likes</p>
                   <div className="update-section">
-                    <FavoriteBorderIcon className="favourite-icon" />
+                    <FavoriteBorderIcon
+                      className="favourite-icon"
+                      onClick={() => {
+                        handelLike(image.id, image.likeCount);
+                      }}
+                    />
                     {user && projectAuth.currentUser.uid === image.userId && (
                       <div>
                         <EditIcon
