@@ -3,32 +3,52 @@ import ImageGrid from "./comps/ImageGrid";
 import Modal from "./comps/Modal";
 import Title from "./comps/Title";
 import UploadForm from "./comps/UploadForm";
-import firebase, { projectAuth } from "./firebase/config";
+import { projectAuth } from "./firebase/config";
 import { useAuthState } from "react-firebase-hooks/auth";
 import Footer from "./comps/Footer";
+import Authentication from "./comps/Authentication";
 
 function App() {
   const [image, setImage] = useState(null);
+  const [authenticate, setAuthenticate] = useState(false);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [user] = useAuthState(projectAuth);
-
-  const signInWithGoogle = () =>
-    projectAuth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
-  const signOut = () => projectAuth.signOut();
+  const [click, setClick] = useState(false);
+  const [showError, setShowError] = useState(false);
 
   return (
     <div className="App">
       <Title
-        clickHandel={user ? signOut : signInWithGoogle}
-        button={user ? "SignOut" : "SignIn"}
         description={
           user
             ? "Enjoy sharing your favourite posts."
             : "Sign In to share your favourite posts."
         }
+        email={email}
+        password={password}
+        setAuthenticate={setAuthenticate}
+        setClick={setClick}
+        click={click}
+        setShowError={setShowError}
       />
-      {/* {SignIn()} */}
+      {authenticate && (
+        <Authentication
+          setAuthenticate={setAuthenticate}
+          email={email}
+          password={password}
+          setEmail={setEmail}
+          setPassword={setPassword}
+        />
+      )}
       {user && <UploadForm />}
-      <ImageGrid setImage={setImage} />
+      <ImageGrid
+        setImage={setImage}
+        click={click}
+        setClick={setClick}
+        setShowError={setShowError}
+        showError={showError}
+      />
       {image && <Modal image={image} setImage={setImage} />}
       <Footer />
     </div>
