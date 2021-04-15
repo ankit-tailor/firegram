@@ -2,7 +2,7 @@ import React from "react";
 import "../index.css";
 import useFirestore from "../hooks/useFirestore";
 import { motion } from "framer-motion";
-// import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
+import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 import {
   projectAuth,
   projectFirestore,
@@ -33,63 +33,36 @@ const ImageGrid = ({ setImage, click, showError, setShowError, setClick }) => {
       .catch((err) => console.log(err));
   };
 
-  // const handelLike = (id) => {
-  //   if (!user) {
-  //     alert("signIn or signUp to like the post.");
-  //   } else {
-  //     const likesRef = projectFirestore
-  //       .collection("likes")
-  //       .where("imageId", "==", id);
+  const handelLike = (id, likeCount) => {
+    if (!user) {
+      alert("signIn or signUp to like the post.");
+    } else {
+      let newLikes = likeCount;
+      const likeRef = projectFirestore
+        .collection("image")
+        .doc(id)
+        .collection("like")
+        .doc(projectAuth.currentUser.uid);
 
-  //     let likeData;
-
-  //     likesRef.get().then((snap) => {
-  //       console.log(snap.docs);
-  //       snap.docs.forEach((doc) => {
-  //         console.log(
-  //           "START",
-  //           doc.id,
-  //           doc.data(),
-  //           doc.data().userId === projectAuth.currentUser.uid
-  //         );
-
-  //         likeData = doc.data();
-  //         likeData.id = doc.id;
-  //       });
-  //     });
-  //     // console.log(likesRef.get().then((doc) => console.log(doc.docs)));
-  //     let imageData;
-  //     const imageRef = projectFirestore.collection("image");
-  //     imageRef
-  //       .doc(id)
-  //       .get()
-  //       .then((doc) => {
-  //         if (doc.exists) {
-  //           imageData = doc.data();
-  //           imageData.imageId = doc.id;
-  //           return likesRef.get();
-  //         }
-  //         // console.log("DOCS", doc.id, doc.data());
-  //       })
-  //       .then((data) => {
-  //         console.log(data.empty);
-  //         if (data.empty) {
-  //           projectFirestore
-  //             .collection("likes")
-  //             .add({
-  //               imageId: id,
-  //               userId: projectAuth.currentUser.uid,
-  //             })
-  //             .then(() => {
-  //               imageData.likeCount++;
-  //               imageRef.doc(id).update({
-  //                 likeCount: imageData.likeCount,
-  //               });
-  //             });
-  //         }
-  //       });
-  //   }
-  // };
+      likeRef.get().then((doc) => {
+        if (doc.data()) {
+          newLikes--;
+          likeRef.delete();
+          projectFirestore.collection("image").doc(id).update({
+            likeCount: newLikes,
+          });
+        } else {
+          newLikes++;
+          likeRef.set({
+            isLiked: true,
+          });
+          projectFirestore.collection("image").doc(id).update({
+            likeCount: newLikes,
+          });
+        }
+      });
+    }
+  };
 
   const handelEdit = (id) => {
     setClicked(!clicked);
@@ -97,7 +70,7 @@ const ImageGrid = ({ setImage, click, showError, setShowError, setClick }) => {
   };
 
   return (
-    <div className={click ? "img-grid gird" : "img-grid"}>
+    <div className={click ? "img-grid" : "img-grid"}>
       {imageData && !click
         ? imageData.map((image) => (
             <motion.div
@@ -125,9 +98,12 @@ const ImageGrid = ({ setImage, click, showError, setShowError, setClick }) => {
                 />
               </motion.div>
               <p>{image.caption}</p>
-              {/* <p>{image.likeCount} likes</p> */}
+              <p>{image.likeCount} likes</p>
               <div className="update-section">
-                {/* <FavoriteBorderIcon className="favourite-icon" /> */}
+                <FavoriteBorderIcon
+                  className="favourite-icon"
+                  onClick={() => handelLike(image.id, image.likeCount)}
+                />
                 {user && projectAuth.currentUser.uid === image.userId && (
                   <div>
                     <EditIcon
@@ -180,9 +156,9 @@ const ImageGrid = ({ setImage, click, showError, setShowError, setClick }) => {
                     />
                   </motion.div>
                   <p>{image.caption}</p>
-                  {/* <p>{image.likeCount} likes</p> */}
+                  <p>{image.likeCount} likes</p>
                   <div className="update-section">
-                    {/* <FavoriteBorderIcon className="favourite-icon" /> */}
+                    <FavoriteBorderIcon className="favourite-icon" />
                     {user && projectAuth.currentUser.uid === image.userId && (
                       <div>
                         <EditIcon
