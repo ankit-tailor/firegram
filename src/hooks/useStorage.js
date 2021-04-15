@@ -1,11 +1,14 @@
 import { useEffect, useState } from "react";
 import {
+  projectAuth,
   projectFirestore,
   projectStorage,
   timestamp,
 } from "../firebase/config";
+import { useAuthState } from "react-firebase-hooks/auth";
 
 const useStorage = (file, caption) => {
+  const [user] = useAuthState(projectAuth);
   const [progress, setProgress] = useState(0);
   const [error, setError] = useState("");
   const [url, setUrl] = useState(null);
@@ -30,10 +33,13 @@ const useStorage = (file, caption) => {
           url,
           createdAt,
           caption,
+          userId: projectAuth.currentUser.uid,
+          likeCount: 0,
+          fileName: file.name,
         });
       }
     );
-  }, [file, caption]);
+  }, [file, caption, user]);
 
   return { progress, url, error };
 };
