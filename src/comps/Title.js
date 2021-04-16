@@ -1,6 +1,7 @@
 import React from "react";
 import { projectAuth } from "../firebase/config";
 import { useAuthState } from "react-firebase-hooks/auth";
+import "./Title.css";
 
 const Title = ({
   setAuthenticate,
@@ -27,6 +28,7 @@ const Title = ({
           <button
             onClick={() => {
               user ? projectAuth.signOut() : setAuthenticate(true);
+              setClick(false);
             }}
           >
             {user ? "Sign Out" : "Sign In"}
