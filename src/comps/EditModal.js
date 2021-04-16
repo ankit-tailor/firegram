@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import React from "react";
 import { useState } from "react";
 import { projectFirestore } from "../firebase/config";
+import "./EditModal.css";
 
 const EditModal = ({ imageId, setClicked }) => {
   const [editText, setEditText] = useState("");
