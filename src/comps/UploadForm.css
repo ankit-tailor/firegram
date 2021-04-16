@@ -53,8 +53,8 @@ label:hover {
   color: var(--error);
 }
 
-@media screen and (min-width: 870px) {
+/* @media screen and (min-width: 870px) {
   form {
     width: 50%;
   }
-}
+} */
