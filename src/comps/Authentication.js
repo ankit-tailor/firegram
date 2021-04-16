@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import CloseIcon from "@material-ui/icons/Close";
 import { projectAuth } from "../firebase/config";
 import { motion } from "framer-motion";
+import "./Authentication.css";
 
 const Authentication = ({
   setAuthenticate,
