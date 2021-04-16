@@ -1,5 +1,5 @@
 import React from "react";
-import "../index.css";
+import "./ImageGrid.css";
 import useFirestore from "../hooks/useFirestore";
 import { motion } from "framer-motion";
 import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
@@ -70,7 +70,7 @@ const ImageGrid = ({ setImage, click, showError, setShowError, setClick }) => {
   };
 
   return (
-    <div className={click ? "img-grid" : "img-grid"}>
+    <div className={click ? "grid" : "img-grid"}>
       {imageData && !click
         ? imageData.map((image) => (
             <motion.div
