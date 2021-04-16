@@ -1,0 +1,88 @@
+:root {
+  --primary: #efb6b2;
+}
+
+.img-grid {
+  margin: 20px auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 40px;
+}
+
+.grid {
+  margin: 20px auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 40px;
+}
+
+.post-section {
+  border: 1px solid var(--primary);
+}
+.img-wrap {
+  overflow: hidden;
+  height: 0;
+  padding: 50% 0;
+  position: relative;
+  opacity: 0.8;
+  margin: 2px;
+}
+.img-wrap img {
+  min-width: 100%;
+  min-height: 100%;
+  max-width: 150%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.update-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.2rem;
+  margin-left: 0.7rem;
+  margin-right: 0.7rem;
+}
+
+.delete-icon {
+  color: #000000;
+  cursor: pointer;
+}
+
+.edit-icon {
+  color: #000000;
+  cursor: pointer;
+  margin-right: 0.5rem;
+}
+
+.favourite-icon {
+  cursor: pointer;
+}
+
+.favourite-icon:hover {
+  color: var(--primary);
+  transition: 0;
+}
+
+.post-section p {
+  margin-left: 0.7rem;
+}
+
+@media screen and (min-width: 730px) {
+  .img-grid {
+    width: 50%;
+  }
+}
+
+@media screen and (max-width: 520px) {
+  .grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media screen and (max-width: 350px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
