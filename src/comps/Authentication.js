@@ -61,6 +61,8 @@ const Authentication = ({
         </motion.h3>
         <motion.hr />
         <p className="auth-text">{loginMessage}</p>
+        <p className="auth-text">email: tester@test.com</p>
+        <p className="auth-text">password: 123456</p>
         <motion.form initial={{ y: "-100vh" }} animate={{ y: 0 }}>
           <motion.input
             type="email"
