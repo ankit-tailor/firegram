@@ -1,3 +1,7 @@
+Photogram is web app implemented using react and firebase. 
+
+link to project: https://firegram-at.netlify.com
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
